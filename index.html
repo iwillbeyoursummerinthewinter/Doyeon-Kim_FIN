@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.typekit.net/ron7lts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
+	<script src="./StartAudioContext.js"></script>
+	<script src="./rita-full.min.js"></script>
+	<link rel="stylesheet" href="./styles.css">
+	
+	<title>Am I sensitive?</title>
+
+	<style>
+		.feeling {}
+
+    body {
+    font-family: "noka", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+    .gothic-a1-semibold {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .yesorno {display: flex; flex-direction: row; justify-content: space-between;}
+
+   
+     .yes, .no {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            margin-top: 200px;
+        }
+
+        .yes::before, .no::before {
+            content: attr(data-text);
+            position: absolute;
+            top: -30px;
+            font-size: 1.5rem;
+            font-weight: semibold;
+            background-color: none;
+            color: khaki;
+            padding: 0 5px;
+        }
+
+        .yes hr, .no hr {
+            border: solid 1.5px khaki;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+  td {
+      cursor: pointer;}
+ 
+		
+	</style>
+  
+  
+
+
+  
+
+</head>
+
+<body>
+
+	<div id="container">
+      <div id="title" style="font-size: 3rem;
+      line-height: 50px; word-break: keep-all;">
+      	Am I sensitive?
+      	<br>
+      	나는 예민이일까?
+      </div>
+
+<div class="yesorno">
+            <div class="yes" data-text="YES">
+                <hr>
+            </div>
+            <div class="no" data-text="NO">
+                <hr>
+            </div>
+        </div>
+
+    
+
+      <div class="feeling ui-draggable ui-draggable-handle">
+      	주변 환경의
+        <br>
+        미묘한 부분을 잘 알아차리는
+        <br>
+        편이다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle">
+      	나는 다른 사람들의 기분에
+        <br> 
+        영향을 받는다.
+        </div>
+      <div class="feeling ui-draggable ui-draggable-handle">
+      	나는 통증에
+        <br>
+        매우 민감하다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle">
+      	바쁘게 보낸 날은 침대나 
+      	<br>
+      	어두운 방 또는 혼자 있을 수
+        <br>
+        있는 장소로
+        <br>
+        숨어들어가
+      	<br>
+      	자극을 진정
+        <br>
+        시켜야 한다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	카페인에 민감하다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	밝은 빛, 강한
+      	<br>
+        냄새, 거친 천,
+        <br>
+        또는 가까이에서 들리는
+        <br>
+        사이렌 소리 
+        <br>
+        같은 것들에
+        <br> 
+        쉽게 피곤해진다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	풍요롭고 복잡한 내면 세계를 갖고 있다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	큰 소리에 불편해진다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	미술이나 음악에 깊은 감동을 받는다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	성실하다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	깜짝깜짝
+        <br>
+        놀란다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	짧은 시간 내에 많은 일을 해야 할 때 당황한다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	사람들이 
+        <br>
+        불편해할 때, 
+      	<br>
+      	어떻게 하면
+        <br>
+        좀 더 편안하게 해줄 수 있는지 안다.
+      	<br>
+      	(조명이나 좌석 배치를 바꾸는 등)
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+      	사람들이 한 번에 너무 많은 것을 요구하면
+        <br>
+        짜증이 난다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        실수하거나
+        <br>
+        잊어버리지
+        <br>
+        않으려고 애쓴다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        어렸을 때,
+        <br>
+        부모님이나
+        <br> 
+        선생님이 나를 
+        <br>
+        민감하다거나
+        <br>
+        수줍은 아이로 평가했다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        경쟁 중이거나 누가 지켜보고 있으면, 
+        <br> 
+        긴장되어 수행 능력이 떨어진다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        불편하거나
+        <br>
+        압도되는
+        <br> 
+        상황을 피하는 것이 항상
+        <br>
+        중요한 우선
+        <br>
+        순위다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        섬세한 냄새, 맛, 소리, 예술 작품을 잘 알아채고 즐기는 편이다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        폭력적인 영화, TV쇼 등을 피하려고 한다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        주변에서
+        <br>
+        한꺼번에 여러
+        <br>
+        일이 벌어지면
+        <br>
+        불편해진다.
+      </div>
+      <div class="feeling ui-draggable ui-draggable-handle"> 
+        삶에 변화가 
+        <br>
+        생기면, 두렵고
+        <br> 
+        혼란스럽다.
+      </div>
+
+  <div id="message" style="margin-top: 130px; font-size: 0.9rem; font-weight: bold; text-align: center; color: khaki;">
+            YES
+            <br>
+            12개
+            <br>
+            이상
+            <br>
+            인가요
+            <br>
+            ?
+            <br> 
+            <br>
+            당신은 
+            <br>
+            예민이 
+            <br>
+            입니다!
+        </div>
+
+        <table id="done" style="margin: 120px auto; margin-left: 760px;">
+
+          <tbody id="table-0" style="text-align: center;"
+          >
+            <tr>
+            <td> Are you done? </td>
+            <td class="largeCell">
+            </td>
+            </tr>
+          </tbody> 
+
+             
+
+        </table>
+    
+
+
+
+  </div>
+
+
+
+
+  
+  <script src="./script.js"></script>
+
+<script>
+
+var width;
+var height;
+
+
+var feelings = ["나는 주위에 있는 미묘한 것들을 인식하는 것 같다.", 
+
+"나는 다른 사람들의 기분에 영향을 받는다.", 
+
+"나는 통증에 매우 민감하다.", 
+
+"바쁘게 보낸 날은 침대나 어두운 방 또는 혼자 있을 수 있는 장소로 숨어들어가 자극을 진정시켜야 한다.", 
+
+"카페인에 특히 민감하다.", 
+
+"밝은 빛, 강한 냄새, 거친 천, 또는 가까이에서 들리는 사이렌 소리 같은 것들에 의해 쉽게 피곤해진다.",
+
+"풍요롭고 복잡한 내면 세계를 갖고 있다.",
+
+"큰 소리에 불편해진다.",
+
+"미술이나 음악에 깊은 감동을 받는다.",
+
+"양심적이다.",
+
+"깜짝깜짝 놀란다.",
+
+"짧은 시간 내에 많은 일을 해야 할 때 당황한다.",
+
+"사람들이 불편해할 때, 어떻게 하면 좀 더 편안하게 해줄 수 있는지 안다.(조명이나 좌석 배치를 바꾸는 등)",
+
+"사람들이 한 번에 너무 많은 것을 요구하면 짜증이 난다."].reverse();
+
+
+
+var pDivs = [];
+
+var word_index = 0;
+
+StartAudioContext(Tone.context, window);
+$(window).click(function(){
+  Tone.context.resume();
+});
+
+var noise = new Tone.Noise("brown");
+noise.start();
+var filter = new Tone.Filter(200, 'bandpass');
+var volume = new Tone.Volume(-8);
+noise.chain(filter, volume, Tone.Master);
+
+var tv;
+var th;
+
+$(document).ready(function(event){
+  Tone.Master.mute = localStorage.getItem('mute') == 'true' ? true : false;
+  let text = Tone.Master.mute ? "SOUND ON" : "MUTE";
+  $("#mute-btn").text(text);
+
+  width = $(window).innerWidth();
+  height = $(window).innerHeight();
+  displayTitle(title, author);
+  setTimeout(setupText, 1500);
+  tv = setInterval(rotateVertical, 1000);
+  th = setInterval(rotateHorizontal, 2000);
+});
+
+$("#title").click(function(){
+  console.log("hi");
+  $(".feeling").removeClass("activated").css({
+    top: 'calc(50vh - 100px)',
+    left: 'calc(50vw - 100px)',
+  });
+});
+
+
+
+$("#container").on("mouseenter", ".feeling", function(event){
+  $(this).addClass("activated");
+  $(".feeling").draggable({
+    snap: true,
+    containment: '#container',
+    stack: ".feeling",
+  });
+});
+
+
+function displayTitle(title, author){
+  $("#title").html(title + "<br>by " + author);
+}
+
+function setupText(){
+  feelings.forEach(function(p, index){
+    let newDiv = $(`<div class="feeling"></div>`);
+    newDiv.text(p);
+    $("#container").append(newDiv);
+  });
+
+  $("#title").css({
+    "font-size": "3rem"
+  });
+}
+
+
+
+
+$(document).ready(function() {
+    $('#done').on('click', 'td', funtion() {
+        window.location.href = "./About_Yemini/index.html";
+    });
+});   
+
+
+       
+</script>
+
+
+</body>
+</html>
